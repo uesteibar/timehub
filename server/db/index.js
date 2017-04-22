@@ -1,4 +1,6 @@
 const MongoClient = require('mongodb').MongoClient
+const github = require('../services/api/github')
+
 const url = 'mongodb://localhost:27017/myproject'
 
 const mongo = (callback) => {
@@ -8,36 +10,26 @@ const mongo = (callback) => {
   })
 }
 
-const find = (callback) => {
-  MongoClient.connect(url, (err, db) => {
-    callback(err, db)
-    db.close()
+const find = (query, callback) => {
+  mongo((err, db) => {
+    const col = db.collection('timelines')
+    const repo = col.find(query).limit(1).toArray()
+    repo.then((data) => callback(data[0]))
   })
 }
 
-const seed = () => {
-  mongo(insertSeed)
+const insert = (data, callback) => {
+  mongo((err, db) => {
+    const collection = db.collection('timelines');
+    collection.insertOne(data).then(() => callback(data))
+  })
 }
 
-const insertSeed = function(err, db) {
-  const collection = db.collection('timelines');
-  collection.remove()
-  collection.insertOne({
-    repo: 'https://github.com/uesteibar/hyperdocs',
-    user: 'uesteibar',
-    events: [
-      {
-        type: 'pull_request',
-        user: 'uesteibar',
-        title: 'Build awesome feature',
-      },
-      {
-        type: 'pull_request',
-        user: 'uesteibar',
-        title: 'Fix everything I broke before',
-      },
-    ]
-  }, (err, result) => {});
+const cleanDB = () => {
+  mongo((err, db) => {
+    const collection = db.collection('timelines');
+    collection.remove()
+  })
 }
 
-module.exports = { mongo, seed, find }
+module.exports = { find, insert, cleanDB }

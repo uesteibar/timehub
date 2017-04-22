@@ -6,7 +6,8 @@ const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('./webpack.config.js');
-const { seed, mongo } = require('./server/db')
+const mongo = require('./server/db')
+const importRepo = require('./server/services/importer')
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
@@ -41,11 +42,14 @@ if (isDeveloping) {
 
 }
 
-app.get('/events', (req, res) => {
-  mongo((err, db) => {
-    const col = db.collection('timelines')
-    const repo = col.find({ repo: req.query.repo }).limit(1).toArray()
-    repo.then((data) => res.send(data[0]))
+app.get('/:username/:repo', (req, res) => {
+  const { username, repo } = req.params
+  mongo.find({ key: `${username}/${repo}` }, (data) => {
+    if (data) {
+      res.send(data)
+    } else {
+      importRepo(`${username}/${repo}`, (data) => res.send(data))
+    }
   })
 });
 
@@ -53,6 +57,6 @@ app.listen(port, '0.0.0.0', (err) => {
   if (err) {
     console.log(err);
   }
-  seed()
+  mongo.cleanDB()
   console.info('==> 🌎 Listening on port %s. Open up http://0.0.0.0:%s/ in your browser.', port, port);
 });

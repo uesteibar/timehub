@@ -38,10 +38,13 @@
   "dependencies": {
     "babel-cli": "^6.4.0",
     "babel-core": "^6.22.1",
+    "dotenv": "^4.0.0",
     "mongodb": "^2.2.26",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
-    "react-event-timeline": "^1.2.2"
+    "react-event-timeline": "^1.2.2",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^4.1.6",

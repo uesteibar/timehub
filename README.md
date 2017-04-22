@@ -25,12 +25,18 @@ cd timehub
 yarn
 ```
 
+Install MongoDB
+
+You also need to set `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`.
+The reason for this is that we do too many requests to import a repo and we would otherwise exceed the rate limit.
+
 Run the server
 ```bash
 yarn start
 ```
 
-Go to [http://127.0.0.1:3000](http://127.0.0.1:3000)
+Go to `http://127.0.0.1:3000/:username/:repo`
+Keep in mind that in the first load we import all the date we need and it might take quite long depending on the size of the project :)
 
 
 ## Contributing
