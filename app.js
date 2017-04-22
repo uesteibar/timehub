@@ -42,6 +42,8 @@ if (isDeveloping) {
 
 }
 
+app.use(express.static('public'))
+
 app.get('/:username/:repo', (req, res) => {
   const { username, repo } = req.params
   mongo.find({ key: `${username}/${repo}` }, (data) => {

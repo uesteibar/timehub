@@ -3,7 +3,7 @@ const github = require('../api/github')
 const flatten = (arrays) => [].concat.apply([], arrays)
 const clean = (items) => items.filter((item) => !!item)
 
-const call = ({ path, data, mapper }) => {
+const call = ({ path, data, mapper, filter }) => {
   let times = []
   for (let i = 1; i < 10; i++) {
     times.push(i)
@@ -13,7 +13,9 @@ const call = ({ path, data, mapper }) => {
   })
   return Promise.all(promises)
     .then((events) => {
-      data.events = data.events.concat(mapper(clean(flatten(events))))
+      events = clean(flatten(events))
+      if (filter) { events = filter(events) }
+      data.events = data.events.concat(mapper(events))
       return data
     })
 }

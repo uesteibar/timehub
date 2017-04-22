@@ -6,6 +6,9 @@ const call = (data) => {
     path: `${data.key}/issues?state=all`,
     data,
     mapper,
+    filter: (events) => {
+      return events.filter((event) => !event.html_url.includes('/pull/'))
+    }
   })
 }
 
