@@ -8,6 +8,7 @@ import { actions } from '../../ducks/timeline'
 
 import { Timeline, TimelineEvent } from 'react-event-timeline'
 import Icon from '../../components/Icon'
+import Loading from '../../components/Loading'
 import PullRequestEvent from './PullRequestEvent'
 import ForkEvent from './ForkEvent'
 import ReleaseEvent from './ReleaseEvent'
@@ -25,11 +26,11 @@ class TimelineComp extends React.Component {
   };
 
   render() {
-    const { timeline } = this.props
+    const { timeline, isLoading } = this.props
 
-    if (!timeline.events) {
-      return null
-    }
+    console.log({isLoading})
+    if (isLoading) { return <Loading /> }
+    if (!timeline.events) { return null }
 
     return (
       <Timeline>
