@@ -4,13 +4,14 @@ import React, { Component } from 'react'
 
 import { TimelineEvent } from 'react-event-timeline'
 import Icon from '../../../components/Icon'
+import Username from '../../../components/Username'
 
 class RepoCreatedEvent extends Component {
   userProfile = user => {
     return (
       <a className="avatar" href={ user.profileUrl } target="_blank">
         <img src={ user.avatar } alt={ user.username } />
-        {user.username}
+        @{user.username}
       </a>
     )
   };
@@ -23,9 +24,10 @@ class RepoCreatedEvent extends Component {
       <TimelineEvent
         title={ this.userProfile(user) }
         createdAt={ createdAt }
+        iconColor='#28a745'
         icon={ <Icon name='code' /> } >
         <span className="content">
-          @{ user.username } created this repo!
+          {<Username user={user} />} created this repo!
         </span>
       </TimelineEvent>
     )

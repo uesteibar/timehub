@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 
 import { TimelineEvent } from 'react-event-timeline'
 import Icon from '../../../components/Icon'
+import Username from '../../../components/Username'
 import octicons from 'octicons'
 
 class IssueEvent extends Component {
@@ -11,7 +12,7 @@ class IssueEvent extends Component {
     return (
       <a className="avatar" href={ user.profileUrl } target="_blank">
         <img src={ user.avatar } alt={ user.username } />
-        {user.username}
+        @{user.username}
       </a>
     )
   };
@@ -24,8 +25,14 @@ class IssueEvent extends Component {
       <TimelineEvent
         title={ this.userProfile(user) }
         createdAt={ createdAt }
+        iconColor='#c00000'
         icon={ <Icon name='issue-opened' /> } >
-        <span className="content">{content}</span>
+        <div className='content'>
+          <p>
+            {<Username user={user} />} created an issue
+          </p>
+          <q className='quote'>{content}</q>
+        </div>
       </TimelineEvent>
     )
   }

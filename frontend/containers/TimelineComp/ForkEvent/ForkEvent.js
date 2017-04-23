@@ -4,13 +4,14 @@ import React, { Component } from 'react'
 
 import { TimelineEvent } from 'react-event-timeline'
 import Icon from '../../../components/Icon'
+import Username from '../../../components/Username'
 
 class ForkEvent extends Component {
   userProfile = user => {
     return (
       <a className="avatar" href={ user.profileUrl } target="_blank">
         <img src={ user.avatar } alt={ user.username } />
-        {user.username}
+        @{user.username}
       </a>
     )
   };
@@ -21,10 +22,11 @@ class ForkEvent extends Component {
       <TimelineEvent
         title={ this.userProfile(user) }
         createdAt={ createdAt }
+        iconColor='#84b6eb'
         icon={ <Icon name="repo-forked" /> }
       >
         <span className="content">
-          {user.username}
+          {<Username user={user} />}
           {' '}
           forked this repo to
           {' '}

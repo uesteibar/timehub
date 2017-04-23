@@ -1,6 +1,13 @@
 body {
 	background-color: #f2f2f2;
 }
+a {
+	text-decoration: none;
+	color: #00897b;
+}
+.quote {
+	margin-left: 24px;
+}
 .avatar {
 	display: inline-block;
 	font-size: 18px;
@@ -11,15 +18,21 @@ body {
 	vertical-align: middle;
 	width: 40px;
 }
-.searhRepo {
+.searchRepo {
 	border: 1px solid #C1C1C1;
 	border-radius: 5px;
 	font-size: 20px;
 	margin-right: 10px;
 	padding: 20px;
-	width: 40%;
+	width: 20%;
 }
+
+.inputGroup {
+	font-size: 32px;
+}
+
 .content {
+	padding-bottom: 12px;
 	font-size: 18px;
 }
 .clickable {
@@ -29,7 +42,7 @@ body {
 .loader {
   font-family: Consolas, Menlo, Monaco, monospace;
   font-weight: bold;
-  font-size: 48px;
+  font-size: 400px;
   opacity: 0.8;
 	text-align: center;
 	margin-top: 16px;

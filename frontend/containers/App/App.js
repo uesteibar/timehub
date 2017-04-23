@@ -6,7 +6,7 @@ import { Provider } from 'react-redux'
 import store from '../../ducks'
 
 import Header from '../Header'
-import Repository from '../Repository'
+import RepositoryForm from '../RepositoryForm'
 import TimelineComp from '../TimelineComp'
 
 class App extends Component {
@@ -14,8 +14,7 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="skeleton">
-          <Header />
-          <Repository onSubmit={this.onSubmit} />
+          <RepositoryForm onSubmit={this.onSubmit} />
           <TimelineComp />
         </div>
       </Provider>

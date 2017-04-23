@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 
 import { TimelineEvent } from 'react-event-timeline'
 import Icon from '../../../components/Icon'
+import Username from '../../../components/Username'
 import octicons from 'octicons'
 
 class PullRequestEvent extends Component {
@@ -11,7 +12,7 @@ class PullRequestEvent extends Component {
     return (
       <a className="avatar" href={ user.profileUrl } target="_blank">
         <img src={ user.avatar } alt={ user.username } />
-        {user.username}
+        @{user.username}
       </a>
     )
   };
@@ -24,8 +25,14 @@ class PullRequestEvent extends Component {
       <TimelineEvent
         title={ this.userProfile(user) }
         createdAt={ createdAt }
+        iconColor='#28a745'
         icon={ <Icon name='git-pull-request' /> } >
-        <span className="content">{content}</span>
+        <div className='content'>
+          <p>
+            {<Username user={user} />} opened a pull request
+          </p>
+          <q className='quote'>{content}</q>
+        </div>
       </TimelineEvent>
     )
   }

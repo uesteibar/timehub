@@ -4,13 +4,14 @@ import React, { Component } from 'react'
 
 import { TimelineEvent } from 'react-event-timeline'
 import Icon from '../../../components/Icon'
+import Username from '../../../components/Username'
 
 class ReleaseEvent extends Component {
   userProfile = user => {
     return (
       <a className="avatar" href={ user.profileUrl } target="_blank">
         <img src={ user.avatar } alt={ user.username } />
-        {user.username}
+        @{user.username}
       </a>
     )
   };
@@ -23,8 +24,14 @@ class ReleaseEvent extends Component {
       <TimelineEvent
         title={ this.userProfile(user) }
         createdAt={ createdAt }
+        iconColor='#cc317c'
         icon={ <Icon name='tag' /> } >
-        <span className="content">{content}</span>
+        <div className='content'>
+          <p>
+            {<Username user={user} />} tagged a release
+          </p>
+          <q className='quote'>{content}</q>
+        </div>
       </TimelineEvent>
     )
   }
