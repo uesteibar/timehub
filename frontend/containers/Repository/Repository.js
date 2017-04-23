@@ -2,6 +2,10 @@
 import React from 'react'
 /* eslint-enable no-unused-vars */
 
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { actions } from '../../ducks/timeline'
+
 class Repository extends React.Component {
   constructor(props) {
     super(props)
@@ -9,6 +13,10 @@ class Repository extends React.Component {
     this.state = {
       term: props.term,
     }
+  }
+
+  onSubmit = key => {
+    this.props.fetchTimeline(key)
   }
 
   onChange = event => {
@@ -34,7 +42,7 @@ class Repository extends React.Component {
           onChange={ this.onChange }
           placeholder="Paste repository, ej: https://github.com/uesteibar/hyperdocs" />
         <button
-          onClick={() => this.props.onSubmit(this.state.term)}
+          onClick={() => this.onSubmit(this.state.term)}
           className="searhRepo clickable" >
           Get Timeline
         </button>
@@ -43,4 +51,7 @@ class Repository extends React.Component {
   }
 }
 
-export default Repository
+const mapActions = dispatch => bindActionCreators(actions, dispatch)
+const mapState = store => store.timeline
+
+export default connect(mapState, mapActions)(Repository)

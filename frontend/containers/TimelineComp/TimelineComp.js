@@ -2,6 +2,10 @@
 import React from 'react'
 /* eslint-enable no-unused-vars */
 
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { actions } from '../../ducks/timeline'
+
 import { Timeline, TimelineEvent } from 'react-event-timeline'
 import Icon from '../../components/Icon'
 import PullRequestEvent from './PullRequestEvent'
@@ -21,7 +25,6 @@ class TimelineComp extends React.Component {
   };
 
   render() {
-
     const { timeline } = this.props
 
     if (!timeline.events) {
@@ -31,7 +34,7 @@ class TimelineComp extends React.Component {
     return (
       <Timeline>
         {
-          this.props.timeline.events.map((event, index) => {
+          timeline.events.map((event, index) => {
             const eventComponents = {
               fork: <ForkEvent key={index} item={event}/>,
               issue: <IssueEvent key={index} item={event}/>,
@@ -48,4 +51,7 @@ class TimelineComp extends React.Component {
   }
 }
 
-export default TimelineComp
+const mapActions = dispatch => bindActionCreators(actions, dispatch)
+const mapState = store => store.timeline
+
+export default connect(mapState, mapActions)(TimelineComp)
