@@ -2,6 +2,7 @@
 
 [![code style](https://img.shields.io/badge/code%20style-prettier-ff69b4.svg?style=flat-square)]()
 [![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg)]()
+[![Code Climate](https://codeclimate.com/github/uesteibar/timehub/badges/gpa.svg)](https://codeclimate.com/github/uesteibar/timehub)
 
 Analyse the entire story of your Github repo in a timeline.
 
@@ -27,7 +28,7 @@ yarn
 
 Install MongoDB
 
-You also need to set `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`.
+You also need to create a `.env` file and add `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`.
 The reason for this is that we do too many requests to import a repo and we would otherwise exceed the rate limit.
 
 Run the server
