@@ -42,12 +42,12 @@ Keep in mind that in the first load we import all the date we need and it might 
 
 ## Contributing
 
-The project uses [`standard-version`][standard-version] to update the [CHANGELOG][] with each commit message and upgrade the package version. For that reason every contribution should have a title and body that follows the [conventional-changelog-standard][] conventions.
+The project uses `standard-version` to update the `CHANGELOG` with each commit message and upgrade the package version. For that reason every contribution should have a title and body that follows the `conventional-changelog-standard` conventions.
 
-So this is a step by step guide to contributing to the project (mostly extracted from the [`standard-version`][standard-version] docs):
+So this is a step by step guide to contributing to the project (mostly extracted from the `standard-version` docs):
 
 1. when you land commits on your `master` branch, select the _Rebase and Merge_ option.
-2. add a title and body that follows the [conventional-changelog-standard conventions][conventional-changelog-standard].
+2. add a title and body that follows the `conventional-changelog-standard conventions`.
 3. when you're ready to release a new version:
   1. `git checkout master; git pull origin master`
   2. run `npm run deploy`
