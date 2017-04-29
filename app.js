@@ -6,7 +6,6 @@ const webpack = require('webpack');
 const webpackMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
 const config = require('./webpack.config.js');
-const mongo = require('./server/db')
 const importRepo = require('./server/services/importer')
 
 const isDeveloping = process.env.NODE_ENV !== 'production';
@@ -15,15 +14,8 @@ const app = express();
 
 
 app.get('/api/:username/:repo', (req, res) => {
-  console.log({req})
   const { username, repo } = req.params
-  mongo.find({ key: `${username}/${repo}` }, (data) => {
-    if (data) {
-      res.send(data)
-    } else {
-      importRepo(`${username}/${repo}`, (data) => res.send(data))
-    }
-  })
+  importRepo(`${username}/${repo}`, (data) => res.json(data))
 });
 
 if (isDeveloping) {
@@ -52,14 +44,10 @@ if (isDeveloping) {
   app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist/index.html'));
   });
-
 }
 
 
 app.listen(port, '0.0.0.0', (err) => {
-  if (err) {
-    console.log(err);
-  }
-  mongo.cleanDB()
+  if (err) { console.log(err); }
   console.info('==> 🌎 Listening on port %s. Open up http://0.0.0.0:%s/ in your browser.', port, port);
 });

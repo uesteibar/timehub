@@ -24,7 +24,6 @@ class TimelineComp extends React.Component {
   render() {
     const { timeline, isLoading } = this.props
 
-    console.log({isLoading})
     if (isLoading) { return <Loading /> }
     if (!timeline.events) { return null }
 

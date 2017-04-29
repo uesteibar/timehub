@@ -33,7 +33,6 @@ const fetchTimelineThunk = (key) => {
   return (dispatch) => {
     dispatch({ type: types.TIMELINE_REQUEST })
 
-    console.log({key})
     return fetch(`/api/${key}`)
       .then(data => data.json())
       .then(
