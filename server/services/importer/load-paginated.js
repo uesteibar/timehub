@@ -5,7 +5,7 @@ const clean = (items) => items.filter((item) => !!item)
 
 const call = ({ path, data, mapper, filter }) => {
   let times = []
-  for (let i = 1; i < 10; i++) {
+  for (let i = 1; i < 20; i++) {
     times.push(i)
   }
   const promises = times.map((i) => {

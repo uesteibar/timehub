@@ -34,11 +34,13 @@ const fetchTimelineThunk = (key) => {
     dispatch({ type: types.TIMELINE_REQUEST })
 
     return fetch(`/api/${key}`)
-      .then(data => data.json())
-      .then(
-        data => dispatch({ type: types.TIMELINE_SUCCESS, timeline: data }),
-        error => dispatch({ type: types.TIMELINE_FAILURE, error })
-      )
+      .then(res => res.json())
+      .then((json) => {
+        if (json.error && json.error.statusCode >= 400) {
+          return dispatch({ type: types.TIMELINE_FAILURE, error: json })
+        }
+        return dispatch({ type: types.TIMELINE_SUCCESS, timeline: json })
+      })
   }
 }
 
