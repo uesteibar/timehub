@@ -1,6 +1,6 @@
 {
   "name": "timehub",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "A web app to browse the story of your repo",
   "main": "app.js",
   "repository": {
@@ -20,7 +20,8 @@
     "prettier": "prettier --single-quote --write --jsx-bracket-same-line index.js 'frontend/**/*.js'",
     "lint:staged": "lint-staged",
     "eslint": "eslint .",
-    "bump": "standard-version"
+    "bump": "standard-version",
+    "deploy": "npm run bump && git push heroku master && git push --follow-tags origin master"
   },
   "lint-staged": {
     "frontend/**/*.js": [
