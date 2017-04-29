@@ -21,15 +21,6 @@ class TimelineComp extends React.Component {
     this.props.fetchTimeline(`${username}/${repo}`)
   }
 
-  userProfile = user => {
-    return (
-      <a className="avatar" href={ user.profileUrl } target="_blank">
-        <img src={ user.avatar } alt={ user.username } />
-        {user.username}
-      </a>
-    )
-  };
-
   render() {
     const { timeline, isLoading } = this.props
 

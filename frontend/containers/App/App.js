@@ -18,14 +18,12 @@ class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="skeleton">
-          <Router>
-            <Switch>
-              <Route exact path="/:username/:repo" component={TimelineComp} />
-              <Route component={NotFound} />
-            </Switch>
-          </Router>
-        </div>
+        <Router>
+          <Switch>
+            <Route exact path="/:username/:repo" component={TimelineComp} />
+            <Route component={NotFound} />
+          </Switch>
+        </Router>
       </Provider>
     )
   }
