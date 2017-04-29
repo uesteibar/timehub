@@ -1,6 +1,6 @@
 {
   "name": "timehub",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A web app to browse the story of your repo",
   "main": "app.js",
   "repository": {
