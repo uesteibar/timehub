@@ -39,7 +39,7 @@ module.exports = {
   ],
   module: {
     loaders: [{
-      test: /\.jsx?$/,
+      test: /\.js?$/,
       exclude: /node_modules/,
       loader: 'babel',
       query: {
@@ -52,8 +52,5 @@ module.exports = {
       test: /\.css$/,
       loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=[name]---[local]---[hash:base64:5]!postcss')
     }]
-  },
-  postcss: [
-    require('autoprefixer')
-  ]
+  }
 };
