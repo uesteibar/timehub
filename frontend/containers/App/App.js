@@ -2,11 +2,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 /* eslint-enable no-unused-vars */
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from '../../ducks'
 
 import Header from '../Header'
-import RepositoryForm from '../RepositoryForm'
+import NotFound from '../NotFound'
 import TimelineComp from '../TimelineComp'
 
 class App extends Component {
@@ -14,8 +19,12 @@ class App extends Component {
     return (
       <Provider store={store}>
         <div className="skeleton">
-          <RepositoryForm onSubmit={this.onSubmit} />
-          <TimelineComp />
+          <Router>
+            <Switch>
+              <Route exact path="/:username/:repo" component={TimelineComp} />
+              <Route component={NotFound} />
+            </Switch>
+          </Router>
         </div>
       </Provider>
     )

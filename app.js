@@ -13,6 +13,19 @@ const isDeveloping = process.env.NODE_ENV !== 'production';
 const port = isDeveloping ? 3000 : process.env.PORT;
 const app = express();
 
+
+app.get('/api/:username/:repo', (req, res) => {
+  console.log({req})
+  const { username, repo } = req.params
+  mongo.find({ key: `${username}/${repo}` }, (data) => {
+    if (data) {
+      res.send(data)
+    } else {
+      importRepo(`${username}/${repo}`, (data) => res.send(data))
+    }
+  })
+});
+
 if (isDeveloping) {
   const compiler = webpack(config);
   const middleware = webpackMiddleware(compiler, {
@@ -30,7 +43,7 @@ if (isDeveloping) {
 
   app.use(middleware);
   app.use(webpackHotMiddleware(compiler));
-  app.get('/', (req, res) => {
+  app.get('*', (req, res) => {
     res.write(middleware.fileSystem.readFileSync(path.join(__dirname, 'dist/index.html')));
     res.end();
   });
@@ -42,18 +55,6 @@ if (isDeveloping) {
 
 }
 
-app.use(express.static('public'))
-
-app.get('/:username/:repo', (req, res) => {
-  const { username, repo } = req.params
-  mongo.find({ key: `${username}/${repo}` }, (data) => {
-    if (data) {
-      res.send(data)
-    } else {
-      importRepo(`${username}/${repo}`, (data) => res.send(data))
-    }
-  })
-});
 
 app.listen(port, '0.0.0.0', (err) => {
   if (err) {

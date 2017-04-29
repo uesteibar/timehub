@@ -16,6 +16,11 @@ import RepoCreatedEvent from './RepoCreatedEvent'
 import IssueEvent from './IssueEvent'
 
 class TimelineComp extends React.Component {
+  componentDidMount() {
+    const { username, repo } = this.props.match.params
+    this.props.fetchTimeline(`${username}/${repo}`)
+  }
+
   userProfile = user => {
     return (
       <a className="avatar" href={ user.profileUrl } target="_blank">
