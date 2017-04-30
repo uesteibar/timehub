@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.0"></a>
+# [0.4.0](https://github.com/uesteibar/timehub/compare/v0.3.1...v0.4.0) (2017-04-30)
+
+
+### Features
+
+* **loading:** Change loading animation ([c60b222](https://github.com/uesteibar/timehub/commit/c60b222))
+* **timeline:** Add filtering ([8f62433](https://github.com/uesteibar/timehub/commit/8f62433))
+
+
+
 <a name="0.3.1"></a>
 ## [0.3.1](https://github.com/uesteibar/timehub/compare/v0.3.0...v0.3.1) (2017-04-29)
 
