@@ -9,6 +9,7 @@ const styles = {
 	  fontSize: 18,
   },
   img: {
+    marginRight: 10,
   	borderRadius: 20,
   	verticalAlign: 'middle',
   	width: 40,

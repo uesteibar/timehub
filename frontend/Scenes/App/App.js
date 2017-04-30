@@ -10,9 +10,8 @@ import {
 import { Provider } from 'react-redux'
 import store from '../../ducks'
 
-import Header from '../Header'
 import NotFound from '../NotFound'
-import TimelineComp from '../TimelineComp'
+import Timeline from '../Timeline'
 
 class App extends Component {
   render() {
@@ -20,7 +19,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <Switch>
-            <Route exact path="/:username/:repo" component={TimelineComp} />
+            <Route exact path="/:username/:repo" component={Timeline} />
             <Route component={NotFound} />
           </Switch>
         </Router>

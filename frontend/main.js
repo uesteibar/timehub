@@ -4,6 +4,6 @@ import PropTypes from 'prop-types'
 /* eslint-enable no-unused-vars */
 
 import ReactDOM from 'react-dom'
-import App from './containers/App'
+import App from './Scenes/App'
 
 ReactDOM.render(<App />, document.getElementById('root'))
