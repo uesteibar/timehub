@@ -2,8 +2,7 @@
 import React from 'react'
 /* eslint-enable no-unused-vars */
 
-import { Timeline, TimelineEvent } from 'react-event-timeline'
-import Icon from '../../components/Icon'
+import { Timeline } from 'react-event-timeline'
 import PullRequestEvent from './PullRequestEvent'
 import ForkEvent from './ForkEvent'
 import ReleaseEvent from './ReleaseEvent'

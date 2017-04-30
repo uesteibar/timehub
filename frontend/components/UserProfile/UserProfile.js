@@ -5,6 +5,7 @@ import injectSheet from 'react-jss'
 
 const styles = {
   avatar: {
+    marginTop: 10,
     display: 'inline-block',
     fontSize: 18,
   },

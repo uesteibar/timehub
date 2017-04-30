@@ -1,4 +1,6 @@
+/* eslint-disable no-unused-vars */
 import thunk from 'redux-thunk'
+/* eslint-enable no-unused-vars */
 
 const initialState = {
   timeline: {},
