@@ -6,7 +6,7 @@ class Username extends Component {
   render() {
     const { username, profileUrl } = this.props.user
     return (
-      <a href={profileUrl} target='_blank'>
+      <a href={ profileUrl } target="_blank">
         @{username}
       </a>
     )

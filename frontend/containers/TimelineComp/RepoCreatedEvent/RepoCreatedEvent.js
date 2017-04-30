@@ -11,10 +11,10 @@ class RepoCreatedEvent extends Component {
 
     return (
       <TimelineEventComp
-        user={user}
+        user={ user }
         date={ createdAt }
-        icon={ { color: '#28a745', name: 'code' } } >
-        <p>{<Username user={user} />} created this repo!</p>
+        icon={{ color: '#28a745', name: 'code' }}>
+        <p>{<Username user={ user } />} created this repo!</p>
       </TimelineEventComp>
     )
   }

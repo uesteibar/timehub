@@ -8,9 +8,7 @@ class Icon extends Component {
   render() {
     const icon = octicons[this.props.name].toSVG()
 
-    return (
-      <div dangerouslySetInnerHTML={{ __html: icon }} />
-    )
+    return <div dangerouslySetInnerHTML={{ __html: icon }} />
   }
 }
 

@@ -24,34 +24,44 @@ class Timeline extends React.Component {
 
   onFilterChange = e => {
     this.setState({ filter: e.target.value.toLowerCase() })
-  }
+  };
 
   findInObjectField = object => {
     const { filter } = this.state
 
     return Object.keys(object).find(attr => {
-      return (typeof(object[attr]) === 'string')
-                && object[attr].toLowerCase().match(filter)
+      return (
+        typeof object[attr] === 'string' &&
+        object[attr].toLowerCase().match(filter)
+      )
     })
-  }
+  };
 
   render() {
     const { isLoading, error } = this.props
     let { timeline } = this.props
 
-    if (error) { return <NotFound /> }
-    if (isLoading) { return <Loading /> }
+    if (error) {
+      return <NotFound />
+    }
+    if (isLoading) {
+      return <Loading />
+    }
 
-    if (!timeline.events) { return null }
+    if (!timeline.events) {
+      return null
+    }
 
     const events = timeline.events.filter(event => {
-      return this.findInObjectField(event) || this.findInObjectField(event.user)
+      return (
+        this.findInObjectField(event) || this.findInObjectField(event.user)
+      )
     })
 
     return (
       <div>
-        <SearchForm onChange={this.onFilterChange}/>
-        <TimelineComp repo={timeline} events={events}/>
+        <SearchForm onChange={ this.onFilterChange } />
+        <TimelineComp repo={ timeline } events={ events } />
       </div>
     )
   }

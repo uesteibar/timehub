@@ -6,7 +6,7 @@ import cn from 'classnames'
 
 const styles = {
   '@keyframes pulse': {
-    'to': {
+    to: {
       transform: 'scale(0.8)',
       opacity: '.5',
     },
@@ -75,10 +75,10 @@ class Loading extends Component {
   render() {
     const { classes } = this.props
     return (
-      <div className={classes.loader}>
-        <div className={cn([classes.inner, classes.one])}></div>
-        <div className={cn([classes.inner, classes.two])}></div>
-        <div className={cn([classes.inner, classes.three])}></div>
+      <div className={ classes.loader }>
+        <div className={ cn([classes.inner, classes.one]) } />
+        <div className={ cn([classes.inner, classes.two]) } />
+        <div className={ cn([classes.inner, classes.three]) } />
       </div>
     )
   }

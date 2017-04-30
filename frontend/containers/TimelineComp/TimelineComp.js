@@ -16,19 +16,17 @@ class TimelineComp extends React.Component {
 
     return (
       <Timeline>
-        {
-          events.map((event, index) => {
-            const eventComponents = {
-              fork: <ForkEvent key={index} item={event}/>,
-              issue: <IssueEvent key={index} item={event}/>,
-              pull_request: <PullRequestEvent key={index} item={event}/>,
-              release: <ReleaseEvent key={index} item={event}/>,
-            }
+        {events.map((event, index) => {
+          const eventComponents = {
+            fork: <ForkEvent key={ index } item={ event } />,
+            issue: <IssueEvent key={ index } item={ event } />,
+            pull_request: <PullRequestEvent key={ index } item={ event } />,
+            release: <ReleaseEvent key={ index } item={ event } />,
+          }
 
-            return eventComponents[event.type]
-          })
-        }
-        <RepoCreatedEvent key={-1} item={repo}/>
+          return eventComponents[event.type]
+        })}
+        <RepoCreatedEvent key={ -1 } item={ repo } />
       </Timeline>
     )
   }

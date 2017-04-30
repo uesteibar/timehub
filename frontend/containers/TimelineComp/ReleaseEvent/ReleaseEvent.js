@@ -11,13 +11,13 @@ class ReleaseEvent extends Component {
 
     return (
       <TimelineEventComp
-        user={user}
+        user={ user }
         date={ createdAt }
-        icon={ { color: '#cc317c', name: 'tag' } } >
+        icon={{ color: '#cc317c', name: 'tag' }}>
         <p>
-          {<Username user={user} />} tagged a release
+          {<Username user={ user } />} tagged a release
         </p>
-        <q className='quote'>{content}</q>
+        <q className="quote">{content}</q>
       </TimelineEventComp>
     )
   }

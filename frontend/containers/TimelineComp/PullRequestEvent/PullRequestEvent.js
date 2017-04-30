@@ -11,13 +11,13 @@ class PullRequestEvent extends Component {
 
     return (
       <TimelineEventComp
-        user={user}
+        user={ user }
         date={ createdAt }
-        icon={ { color: '#28a745', name: 'git-pull-request' } } >
+        icon={{ color: '#28a745', name: 'git-pull-request' }}>
         <p>
-          {<Username user={user} />} opened a pull request
+          {<Username user={ user } />} opened a pull request
         </p>
-        <q className='quote'>{content}</q>
+        <q className="quote">{content}</q>
       </TimelineEventComp>
     )
   }

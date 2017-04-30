@@ -11,11 +11,11 @@ class IssueEvent extends Component {
 
     return (
       <TimelineEventComp
-        user={user}
+        user={ user }
         date={ createdAt }
-        icon={ { color: '#c00000', name: 'issue-opened' } } >
+        icon={{ color: '#c00000', name: 'issue-opened' }}>
         <p>
-          {<Username user={user} />} created an issue
+          {<Username user={ user } />} created an issue
         </p>
         <q>{content}</q>
       </TimelineEventComp>

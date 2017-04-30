@@ -17,16 +17,17 @@
     "test": "",
     "start": "node app",
     "postinstall": "rimraf dist && NODE_ENV=production webpack --config ./webpack.production.config.js --progress --profile --colors",
-    "prettier": "prettier --single-quote --write --jsx-bracket-same-line index.js 'frontend/**/*.js'",
+    "prettier": "prettier --trailing-comma all --single-quote --write --jsx-bracket-same-line --bracket-spacing  'frontend/**/*.js'",
     "lint:staged": "lint-staged",
     "eslint": "eslint .",
+    "eslint:fix": "eslint . --fix",
     "bump": "standard-version",
     "deploy": "npm run bump && git push heroku master && git push --follow-tags origin master"
   },
   "lint-staged": {
     "frontend/**/*.js": [
-      "prettier --single-quote --write",
-      "eslint --fix",
+      "npm run prettier",
+      "npm run eslint:fix",
       "git add"
     ]
   },

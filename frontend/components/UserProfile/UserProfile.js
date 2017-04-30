@@ -6,13 +6,13 @@ import injectSheet from 'react-jss'
 const styles = {
   avatar: {
     display: 'inline-block',
-	  fontSize: 18,
+    fontSize: 18,
   },
   img: {
     marginRight: 10,
-  	borderRadius: 20,
-  	verticalAlign: 'middle',
-  	width: 40,
+    borderRadius: 20,
+    verticalAlign: 'middle',
+    width: 40,
   },
 }
 
@@ -21,9 +21,9 @@ class UserProfile extends Component {
     const { user: { profileUrl, avatar, username }, classes } = this.props
 
     return (
-      <a className={classes.avatar} href={ profileUrl } target="_blank">
-        <img className={classes.img} src={ avatar } alt={ username } />
-        @{ username }
+      <a className={ classes.avatar } href={ profileUrl } target="_blank">
+        <img className={ classes.img } src={ avatar } alt={ username } />
+        @{username}
       </a>
     )
   }

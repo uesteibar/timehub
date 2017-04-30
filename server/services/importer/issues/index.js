@@ -8,7 +8,7 @@ const call = (data) => {
     mapper,
     filter: (events) => {
       return events.filter((event) => !event.html_url.includes('/pull/'))
-    }
+    },
   })
 }
 

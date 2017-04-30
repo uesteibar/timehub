@@ -39,7 +39,7 @@ const styles = {
     'input:focus + &': {
       transform: 'translateX(12px)',
     },
-  }
+  },
 }
 
 class SearchForm extends React.Component {
@@ -47,15 +47,16 @@ class SearchForm extends React.Component {
     const { classes, onChange } = this.props
 
     return (
-      <div className={classes.container}>
-        <form action="" className={classes.form}>
+      <div className={ classes.container }>
+        <form action="" className={ classes.form }>
           <input
-            className={classes.input}
-            onChange={onChange}
-            type='text'
-            placeholder='type to search...' />
-          <label className={classes.label}>
-            <Icon name='search' />
+            className={ classes.input }
+            onChange={ onChange }
+            type="text"
+            placeholder="type to search..."
+          />
+          <label className={ classes.label }>
+            <Icon name="search" />
           </label>
         </form>
       </div>

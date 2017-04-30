@@ -11,13 +11,13 @@ class ForkEvent extends Component {
 
     return (
       <TimelineEventComp
-        user={user}
+        user={ user }
         date={ createdAt }
-        icon={ { color: '#84b6eb', name: 'repo-forked' } } >
-        {<Username user={user} />}
-          {' '}
-          forked this repo to
-          {' '}
+        icon={{ color: '#84b6eb', name: 'repo-forked' }}>
+        {<Username user={ user } />}
+        {' '}
+        forked this repo to
+        {' '}
         <a href={ repo.url } target="_blank">{repo.key}</a>
       </TimelineEventComp>
     )

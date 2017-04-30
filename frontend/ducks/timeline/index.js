@@ -26,21 +26,19 @@ const reducer = (state = initialState, action) => {
 }
 
 const actions = {
-  fetchTimeline: (key) => fetchTimelineThunk(key),
+  fetchTimeline: key => fetchTimelineThunk(key),
 }
 
-const fetchTimelineThunk = (key) => {
-  return (dispatch) => {
+const fetchTimelineThunk = key => {
+  return dispatch => {
     dispatch({ type: types.TIMELINE_REQUEST })
 
-    return fetch(`/api/${key}`)
-      .then(res => res.json())
-      .then((json) => {
-        if (json.error && json.error.statusCode >= 400) {
-          return dispatch({ type: types.TIMELINE_FAILURE, error: json })
-        }
-        return dispatch({ type: types.TIMELINE_SUCCESS, timeline: json })
-      })
+    return fetch(`/api/${key}`).then(res => res.json()).then(json => {
+      if (json.error && json.error.statusCode >= 400) {
+        return dispatch({ type: types.TIMELINE_FAILURE, error: json })
+      }
+      return dispatch({ type: types.TIMELINE_SUCCESS, timeline: json })
+    })
   }
 }
 
